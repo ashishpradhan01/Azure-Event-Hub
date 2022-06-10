@@ -12,7 +12,7 @@ namespace EventConsumer
     public static class Function1
     {
         [FunctionName("Event_Consumer")]
-        public static async Task Run([EventHubTrigger("firsthub", Connection = "EVENTHUB_CONNECTION_STRING")] EventData[] events, ILogger log)
+        public static async Task Run([EventHubTrigger("multiple-part", Connection = "EVENTHUB_CONNECTION_STRING")] EventData[] events, ILogger log)
         {
             var exceptions = new List<Exception>();
 
@@ -22,6 +22,7 @@ namespace EventConsumer
                 {
                     // Replace these two lines with your processing logic.
                     log.LogInformation(Encoding.UTF8.GetString(eventData.Body));
+                    log.LogInformation($"Sequence number {eventData.SystemProperties}");
                     log.LogInformation($"Sequence number {eventData.SystemProperties.SequenceNumber}");
                     log.LogInformation($"Offset {eventData.SystemProperties.Offset}");
                     await Task.Yield();

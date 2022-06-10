@@ -22,3 +22,27 @@ C:\Users\AshishPradhan\source\repos\EventHub-SendMessages\obj\Debug\netcoreapp3.
 C:\Users\AshishPradhan\source\repos\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.dll
 C:\Users\AshishPradhan\source\repos\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.pdb
 C:\Users\AshishPradhan\source\repos\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.genruntimeconfig.cache
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\EventHub-SendMessages.exe
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\EventHub-SendMessages.deps.json
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\EventHub-SendMessages.runtimeconfig.json
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\EventHub-SendMessages.runtimeconfig.dev.json
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\EventHub-SendMessages.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\EventHub-SendMessages.pdb
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\Azure.Core.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\Azure.Core.Amqp.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\Azure.Messaging.EventHubs.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\Microsoft.Azure.Amqp.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\System.Memory.Data.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.csproj.AssemblyReference.cache
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.AssemblyInfoInputs.cache
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.AssemblyInfo.cs
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.csproj.CoreCompileInputs.cache
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.csproj.CopyComplete
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.dll
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.pdb
+C:\Users\AshishPradhan\source\repos\Event Hub\EventHub-SendMessages\obj\Debug\netcoreapp3.1\EventHub-SendMessages.genruntimeconfig.cache
