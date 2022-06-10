@@ -1,0 +1,8 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "EVENTHUB_CONNECTION_STRING": "Endpoint=sb://hubnamespace-ashish.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QTsQtcOM5SWhWxd5ArqS2N2LS9q2hqR0/w9X9I6/gek="
+  }
+}
