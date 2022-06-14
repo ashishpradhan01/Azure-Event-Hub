@@ -38,7 +38,7 @@ namespace EventHub_Receive
 
             //From specific parition
             string PartitionId = (await hub_client.GetPartitionIdsAsync()).First();
-            await foreach (PartitionEvent _event in hub_client.ReadEventsFromPartitionAsync("Order", EventPosition.Earliest))
+            await foreach (PartitionEvent _event in hub_client.ReadEventsFromPartitionAsync(PartitionId, EventPosition.Earliest))
             {
                 Console.WriteLine("***********************************************");
                 Console.WriteLine($"Partition ID {_event.Partition.PartitionId}");

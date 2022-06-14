@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AshishPradhan\\source\\repos\\EventHubOffReceiver\\EventHubOffReceiver.csproj": {}
+    "C:\\Users\\AshishPradhan\\source\\repos\\Event Hub\\EventHubOffReceiver\\EventHubOffReceiver.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AshishPradhan\\source\\repos\\EventHubOffReceiver\\EventHubOffReceiver.csproj": {
+    "C:\\Users\\AshishPradhan\\source\\repos\\Event Hub\\EventHubOffReceiver\\EventHubOffReceiver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AshishPradhan\\source\\repos\\EventHubOffReceiver\\EventHubOffReceiver.csproj",
+        "projectUniqueName": "C:\\Users\\AshishPradhan\\source\\repos\\Event Hub\\EventHubOffReceiver\\EventHubOffReceiver.csproj",
         "projectName": "EventHubOffReceiver",
-        "projectPath": "C:\\Users\\AshishPradhan\\source\\repos\\EventHubOffReceiver\\EventHubOffReceiver.csproj",
+        "projectPath": "C:\\Users\\AshishPradhan\\source\\repos\\Event Hub\\EventHubOffReceiver\\EventHubOffReceiver.csproj",
         "packagesPath": "C:\\Users\\AshishPradhan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AshishPradhan\\source\\repos\\EventHubOffReceiver\\obj\\",
+        "outputPath": "C:\\Users\\AshishPradhan\\source\\repos\\Event Hub\\EventHubOffReceiver\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\AshishPradhan\\AppData\\Roaming\\NuGet\\NuGet.Config",

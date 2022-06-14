@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EventHubTimer": {
+      "commandName": "Project",
+      "commandLineArgs": "host start --port 7098 --pause-on-error"
+    }
+  }
+}

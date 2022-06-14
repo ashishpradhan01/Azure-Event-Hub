@@ -11,22 +11,22 @@ namespace EventHub_SendMessages
     class Program
     {
         //Single Partition - Event Hub
-        //private static readonly string conn_string = "Endpoint=sb://hubnamespace-ashish.servicebus.windows.net/;SharedAccessKeyName=Send;SharedAccessKey=UzcyTqjNMKUk2K0hUJKYdQICA3nuIM35epHSgCU/3rE=;EntityPath=single-part";
+        private static readonly string conn_string = "Endpoint=sb://hubnamespace-ashish.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QTsQtcOM5SWhWxd5ArqS2N2LS9q2hqR0/w9X9I6/gek=";
 
         //Multiple Partition - Event Hub
-        private static readonly string conn_string = "Endpoint=sb://hubnamespace-ashish.servicebus.windows.net/;SharedAccessKeyName=Common;SharedAccessKey=1tfFHq2kjsIAdbuZH+p6gRqTIeEUFsjChxcfDGljRck=;EntityPath=multiple-part";
-        private static readonly bool multiple = true;
+        //private static readonly string conn_string = "Endpoint=sb://hubnamespace-ashish.servicebus.windows.net/;SharedAccessKeyName=Common;SharedAccessKey=1tfFHq2kjsIAdbuZH+p6gRqTIeEUFsjChxcfDGljRck=;EntityPath=multiple-part";
+        //private static readonly bool multiple = true;
         static void Main(string[] args)
         {
 
-            EventHubProducerClient hub_client = new EventHubProducerClient(conn_string);
+            EventHubProducerClient hub_client = new EventHubProducerClient(conn_string, "single-part");
 
             //EventDataBatch hub_batch = hub_client.CreateBatchAsync().GetAwaiter().GetResult();
             List<EventData> hub_batch = new List<EventData>();
 
             List<string> messages = new List<string>();
 
-            for (int i = 900; i < 950; i++)
+            for (int i = 46; i <= 50; i++)
             {
                /* if(multiple) messages.Add($"Hello message from Multiple Partition - {i}");
                 else messages.Add($"Hello message from Single Partition - {i}");
