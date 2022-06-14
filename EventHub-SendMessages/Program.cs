@@ -19,14 +19,14 @@ namespace EventHub_SendMessages
         static void Main(string[] args)
         {
 
-            EventHubProducerClient hub_client = new EventHubProducerClient(conn_string, "single-part");
+            EventHubProducerClient hub_client = new EventHubProducerClient(conn_string, "demohub");
 
             //EventDataBatch hub_batch = hub_client.CreateBatchAsync().GetAwaiter().GetResult();
             List<EventData> hub_batch = new List<EventData>();
 
             List<string> messages = new List<string>();
 
-            for (int i = 46; i <= 50; i++)
+            for (int i = 10; i <= 20; i++)
             {
                /* if(multiple) messages.Add($"Hello message from Multiple Partition - {i}");
                 else messages.Add($"Hello message from Single Partition - {i}");
@@ -46,7 +46,7 @@ namespace EventHub_SendMessages
 
             hub_client.SendAsync(
                 eventBatch: hub_batch,
-                options: new SendEventOptions { PartitionKey="Order" }
+                options: new SendEventOptions { PartitionKey= "dblogstream" }
                 ).GetAwaiter().GetResult();
             Console.WriteLine("!! All messages are sent !!");
         }

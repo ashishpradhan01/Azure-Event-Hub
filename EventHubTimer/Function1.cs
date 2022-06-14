@@ -33,54 +33,64 @@ namespace EventHubTimer
 
     public class Function1
     {
-        /*static List<MyEvent> eventList = new List<MyEvent>();
-        static DataTable dataTable = GetEventTable();*/
+        static List<MyEvent> eventList = new List<MyEvent>();
+        //static DataTable dataTable = GetEventTable();
         static string sqlConnection = "Server=tcp:server-ashish.database.windows.net,1433;Initial Catalog=db-ashish;Persist Security Info=False;User ID=ash-admin;Password=$$12345P;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         static string tableName = "Messages";
         
         [FunctionName("EventHubTimer")]
-        public async Task RunAsync([TimerTrigger("32 20 * * *")]TimerInfo myTimer, ILogger log)
+        public async Task RunAsync([TimerTrigger("08 20 * * *")]TimerInfo myTimer, ILogger log)
         {
             
             log.LogInformation($"Starting Event Hub Receiver at: {DateTime.Now}");
 
 
             string hubNamespaceConnectionString = "Endpoint=sb://hubnamespace-ashish.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QTsQtcOM5SWhWxd5ArqS2N2LS9q2hqR0/w9X9I6/gek=";
-            string eventHubName = "single-part";
+            string eventHubName = "demohub";
             string consumerGroup = "$Default";
 
             string blobConnectionString = "DefaultEndpointsProtocol=https;AccountName=storashish;AccountKey=2Wyj3XXhQFlHGaXS1+y6N7wQHHrvjmE+mE4GoMrCFVCPDK1lgRb7I5eLz26y3HB/vV70X9wuSaVQ+AStHrJ4Iw==;EndpointSuffix=core.windows.net";
-            string containerName = "offsetcontainer";
+            string containerName = "offset";
 
-            
-            
 
             BlobContainerClient blobContainerClient = new BlobContainerClient(blobConnectionString, containerName);
 
             EventProcessorClient processor = new EventProcessorClient(blobContainerClient, consumerGroup, hubNamespaceConnectionString, eventHubName);
 
-
+            //register
             processor.ProcessEventAsync += Processor_ProcessEventAsync;
             processor.ProcessErrorAsync += Processor_ProcessErrorAsync;
 
-            await processor.StartProcessingAsync();
+            processor.StartProcessing();
             Console.WriteLine("Started the processor");
 
             Console.ReadLine();
-            await processor.StopProcessingAsync();
+
+            processor.StopProcessing();
             Console.WriteLine("Ended the processor");
 
+            //unregister
+            processor.ProcessEventAsync -= Processor_ProcessEventAsync;
+            processor.ProcessErrorAsync -= Processor_ProcessErrorAsync;
+
+
+            Console.WriteLine("Started Inserting in db");
+
+            await InsertIntoDB2();
             
 
-           /* if (dataTable.Rows.Count > 0)
-            {
-                Console.WriteLine("Batch Insert started...");
-                log.LogInformation("Batch insert into the dedicated SQL pool.");
-                BatchInsert(dataTable, log, sqlConnection, tableName);
-            }*/
+
+
+
+            /* if (dataTable.Rows.Count > 0)
+             {
+                 Console.WriteLine("Batch Insert started...");
+                 log.LogInformation("Batch insert into the dedicated SQL pool.");
+                 BatchInsert(dataTable, log, sqlConnection, tableName);
+             }*/
 
             //Console.ReadLine();
-            
+
             /*InsertIntoDB(sqlConnection, tableName);*/
         }
 
@@ -103,18 +113,19 @@ namespace EventHubTimer
                  eventArgs.Data.Offset.ToString(),
                  eventArgs.Data.PartitionKey,
                  Encoding.UTF8.GetString(eventArgs.Data.EventBody)));*/
+            Console.WriteLine("Inserted in list");
+            eventList.Add(new MyEvent(
+                eventArgs.Data.SequenceNumber.ToString(),
+                eventArgs.Data.Offset.ToString(),
+                eventArgs.Data.PartitionKey,
+                Encoding.UTF8.GetString(eventArgs.Data.EventBody)));
+            /*Console.WriteLine("Inserting Into Database.....");
 
-            /* eventList.Add(new MyEvent(
-                 eventArgs.Data.SequenceNumber.ToString(),
-                 eventArgs.Data.Offset.ToString(),
-                 eventArgs.Data.PartitionKey,
-                 Encoding.UTF8.GetString(eventArgs.Data.EventBody)));
- */         Console.WriteLine("Inserting Into Database.....");
             InsertIntoDB(tableName, new MyEvent(
                  eventArgs.Data.SequenceNumber.ToString(),
                  eventArgs.Data.Offset.ToString(),
                  eventArgs.Data.PartitionKey,
-                 Encoding.UTF8.GetString(eventArgs.Data.EventBody)));
+                 Encoding.UTF8.GetString(eventArgs.Data.EventBody)));*/
 
             Console.WriteLine("-----Check point updated-----");
             await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);  //To update the checkpoints in storage
@@ -135,6 +146,7 @@ namespace EventHubTimer
             {
                 connection.Open();
                 command.ExecuteNonQuery();
+                //command.ExecuteNonQueryAsync();
 
                 Console.WriteLine(item.ToString());
                
@@ -148,6 +160,42 @@ namespace EventHubTimer
             {
                 connection.Close();
             }
+        }
+
+
+
+
+        public static async Task<Task> InsertIntoDB2()
+        {
+            SqlConnection connection = new SqlConnection(sqlConnection);
+            try
+            {
+                connection.Open();
+                foreach (var item in eventList)
+                {
+                    string query = $"INSERT INTO {tableName} (SequenceNumber,OffsetNumber,PartitionKey,Body) VALUES(@SequenceNumber, @OffsetNumber, @PartitionKey, @Body)";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@SequenceNumber", item.Sequence);
+                    command.Parameters.AddWithValue("@OffsetNumber", item.Offset);
+                    command.Parameters.AddWithValue("@PartitionKey", item.Partkey);
+                    command.Parameters.AddWithValue("@Body", item.Body);
+                    //command.ExecuteNonQuery();
+                    await command.ExecuteNonQueryAsync();
+                    Console.WriteLine(item.ToString());
+                    Console.WriteLine("Records Inserted Successfully");
+                }
+                //command.ExecuteNonQueryAsync();
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Error Generated. Details: " + e.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return Task.CompletedTask;
         }
 
 
